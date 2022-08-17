@@ -26,7 +26,7 @@ if __name__ == '__main__':
 
     # time test
     print("==========time test==========")
-    big_list = make_random_list(20000)
+    big_list = make_random_list(2000)
     start = time.time()
     selectSort.sort(big_list)
     print(f"select_sort elapsed {time.time() - start}")
