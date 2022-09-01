@@ -26,3 +26,27 @@ class Solution2:
             for j in range(i + 1, len(nums)):
                 if nums[i] + nums[j] == target:
                     return [i, j]
+
+
+if __name__ == '__main__':
+    s = Solution1
+    # case 1
+    nums_ins = [2, 7, 11, 15]
+    target_ins = 9
+    exp_res = [0, 1]
+    print(f"Expected result: {str(exp_res)}")
+    print(f"Outcome result: {s.twoSum(nums_ins, target_ins)}")
+
+    # case 2
+    nums_ins = [3, 2, 4]
+    target_ins = 6
+    exp_res = [1, 2]
+    print(f"Expected result: {str(exp_res)}")
+    print(f"Outcome result: {s.twoSum(nums_ins, target_ins)}")
+
+    # case 3
+    nums_ins = [3, 3]
+    target_ins = 6
+    exp_res = [0, 1]
+    print(f"Expected result: {str(exp_res)}")
+    print(f"Outcome result: {s.twoSum(nums_ins, target_ins)}")
