@@ -2,7 +2,8 @@
 # 超过了5.13%
 # 执行用时: 132 ms
 # 内存消耗: 16.8 MB
-class Solution:
+class Solution1:
+    # dynamic programming
     @staticmethod
     def trappingRainWater(heights):
         # mark the highest number on the left for each element
@@ -24,8 +25,31 @@ class Solution:
         return sum(cannikin_heights)
 
 
+# 2022/08/16
+# 超过了5.13%
+# 执行用时: 132 ms
+# 内存消耗: 16.8 MB
+class Solution2:
+    # double pointer
+    @staticmethod
+    def trappingRainWater(heights):
+        i, j = 0, len(heights) - 1
+        left_max, right_max = 0, 0
+        result = 0
+        while i < j:
+            left_max = max(left_max, heights[i])
+            right_max = max(right_max, heights[j])
+            if heights[i] < heights[j]:
+                result += left_max - heights[i]
+                i += 1
+            else:
+                result += right_max - heights[j]
+                j -= 1
+        return result
+
+
 if __name__ == '__main__':
-    s = Solution
+    s = Solution2
     # case 1
     height_ins = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
     exp_res = 6

@@ -2,12 +2,7 @@
 # 超过了13.24%
 # 执行用时: 792 ms
 # 内存消耗: 72.1 MB
-class LinkedNode:
-    def __init__(self, key=0, value=0):
-        self.key = key
-        self.value = value
-        self.next = None
-        self.prev = None
+from utils import LinkedNode
 
 
 class LRUCache:
