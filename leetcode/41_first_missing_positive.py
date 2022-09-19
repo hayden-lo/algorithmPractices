@@ -5,7 +5,7 @@
 class Solution:
     @staticmethod
     def firstMissingPositive(nums):
-        # initiate a list in size of nums_size + 1, indicating as a positive ingeter list
+        # initiate a list in size of nums_size + 1, indicating as a positive integer list
         nums_size = len(nums)
         mark_list = [0] * (nums_size + 1)
 

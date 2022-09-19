@@ -1,12 +1,13 @@
-# 2022/08/30
-# 超过了50.06%
-# 执行用时: 68 ms
-# 内存消耗: 15 MB
 from utils import build_binary_tree
 
 
+# 2022/09/06
+# 超过了11.98%
+# 执行用时: 584 ms
+# 内存消耗: 57.1 MB
 class Solution1:
     @staticmethod
+    # depth first search
     def minDepth(root):
         if root is None:
             return 0
@@ -23,8 +24,34 @@ class Solution1:
         return min_depth + 1
 
 
+# 2022/09/06
+# 超过了32.33%
+# 执行用时: 528 ms
+# 内存消耗: 51.8 MB
+class Solution2:
+    @staticmethod
+    # breadth first search
+    def minDepth(root):
+        if root is None:
+            return 0
+
+        queue = [root]
+        h = 0
+        while len(queue) > 0:
+            for _ in range(len(queue)):
+                node = queue.pop(0)
+                if node.left is not None:
+                    queue.append(node.left)
+                if node.right is not None:
+                    queue.append(node.right)
+                if node.left is None and node.right is None:
+                    return h + 1
+            h += 1
+        return h
+
+
 if __name__ == '__main__':
-    s = Solution1
+    s = Solution2
     # case 1
     root_ins = [3, 9, 20, None, None, 15, 7]
     root_ins = build_binary_tree(root_ins)

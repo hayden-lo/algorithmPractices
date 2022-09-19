@@ -1,24 +1,25 @@
-def sort(input_list):
-    def dfs(idx, path):
-        if idx == len(input_list):
-            result.append(path[:])
-            return
+def sort(input_list, p, r):
+    if len(input_list) <= 1:
+        return input_list
 
-        for i in range(len(input_list)):
-            if check_list[i] == 0:
-                path.append(input_list[i])
-                check_list[i] = 1
-                dfs(idx + 1, path)
-                path.pop()
-                check_list[i] = 0
+    def partition(arr, p, r):
+        pivot = arr[r]
+        while i < j:
+            while i < j and arr[i] <= pivot:
+                i += 1
+            arr[j] = arr[i]
+            while i < j and arr[j] >= pivot:
+                j -=1
+            arr[i] = arr[j]
 
-    check_list = [0 for i in range(len(input_list))]
-    result = []
-    dfs(0, [])
-    return result
+        arr[i] = pivot
+        return i
+
+    left
+
 
 
 if __name__ == '__main__':
-    # normal_list = [4, 5, 6, -1, 3, 2, 1, 3]
-    normal_list = [1, 2, 3]
+    normal_list = [4, 5, 6, -1, 3, 2, 1, 3]
+    # normal_list = [1, 2, 3]
     print(sort(normal_list))

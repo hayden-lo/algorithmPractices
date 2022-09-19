@@ -47,6 +47,26 @@ class QuickSort:
             QuickSort.sort2(input_list, i, mid - 1)
             QuickSort.sort2(input_list, mid + 1, j)
 
+    @staticmethod
+    def sort3(input_list, p, r):
+        # deal with special case and crucial for not going into maximum depth
+        if p >= r:
+            return
+
+        def partition(arr, p, r):
+            pivot = arr[r]
+            i = p
+            for j in range(p, r):
+                if arr[j] < pivot:
+                    arr[i], arr[j] = arr[j], arr[i]
+                    i += 1
+            arr[i], arr[r] = arr[r], arr[i]
+            return i
+
+        mid = partition(input_list, p, r)
+        QuickSort.sort3(input_list, p, mid - 1)
+        QuickSort.sort3(input_list, mid + 1, r)
+
 
 if __name__ == '__main__':
     normal_list = [4, 5, 6, -1, 3, 2, 1, 3]
@@ -59,11 +79,11 @@ if __name__ == '__main__':
 
     print("==========normal list==========")
     print(normal_list)
-    print(QuickSort.sort2(normal_list, 0, len(normal_list) - 1))
+    print(QuickSort.sort3(normal_list, 0, len(normal_list) - 1))
     print(normal_list)
     print("==========empty list==========")
     print(empty_list)
-    print(QuickSort.sort2(empty_list, 0, len(empty_list) - 1))
+    print(QuickSort.sort3(empty_list, 0, len(empty_list) - 1))
     print(empty_list)
 
     # time test

@@ -25,18 +25,26 @@ def make_random_list(nums):
 
 
 def build_binary_tree(nums):
-    tree_list = []
-    # construct tree node first
-    for i in nums:
-        if i is not None:
-            i = TreeNode(i)
-        tree_list.append(i)
+    if len(nums) == 0:
+        return None
 
-    # build binary tree
-    i = 0
-    while 2 * i + 2 < len(nums):
-        if tree_list[i] is not None:
-            tree_list[i].left = tree_list[i * 2 + 1]
-            tree_list[i].right = tree_list[i * 2 + 2]
-        i += 1
-    return tree_list[0]
+    tree_list = []
+    is_fill_left = True
+    root = None
+    for num in nums:
+        tree_node = TreeNode(num) if num is not None else None
+        if len(tree_list) == 0:
+            root = tree_node
+            tree_list.append(tree_node)
+        elif is_fill_left:
+            tree_list[0].left = tree_node
+            is_fill_left = False
+            if tree_node is not None:
+                tree_list.append(tree_node)
+        else:
+            tree_list[0].right = tree_node
+            is_fill_left = True
+            if tree_node is not None:
+                tree_list.append(tree_node)
+            tree_list.pop(0)
+    return root
